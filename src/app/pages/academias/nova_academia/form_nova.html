@@ -1,0 +1,161 @@
+<div class="row">
+	<div class="col-md-6 col-xs12">
+		<div class="form-group">
+			<h3 class="with-line">Informações Gerais</h3>
+			<input class="form-control input-lg" type="text" name="inputNome" placeholder="Nome da Academia", ng-model="acadInput.nome">
+
+			<input class="form-control input-lg" type="email" name="inputMail" placeholder="Email da Academia", ng-model="acadInput.email">
+
+			<input class="form-control input-lg" type="tel" name="inputTel1" placeholder="Tel 1" ng-model=acadInput.tel_1>
+
+			<input class="form-control input-lg" type="tel" name="inputTel2" placeholder="Tel 2" ng-model=acadInput.tel_2>
+
+			<textarea class="form-control input-lg " size=10 type="textarea" name="inputHorario" placeholder="Horários de funcionamento" ng-model=acadInput.horarios></textarea> 			
+		</div>
+	</div>
+	<div class="col-md-6 col-xs6">
+		<h3 class="with-line">Logo</h3>
+            <div class="userpic">
+              <div class="userpic-wrapper" ng-show="noPicture">
+                <img ng-src="{{ picture }}">
+              </div>
+              <div class="userpic-wrapper" ng-show="!noPicture">
+                <img ng-src="{{ step }}"">
+              </div>
+              <i class="ion-ios-close-outline" ng-click="removePicture(0)" ng-if="!noPicture"></i>
+              <!--<input type="file" ng-show="false" id="uploadFile" ng-file-select="onFileSelect($files)"> -->
+            </div>
+                                 <p>
+                        <label for="upload" class="btn btn-success">
+                            Selecione
+                        </label>
+                        <input id="upload" style="display:none;" type='file' file-input="files"  class="input-xlarge" onchange="angular.element(this).scope().logoUpload(event)" />
+                    </p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6 col-xs12">
+		<div class="form-group">
+			<h3 class="with-line">Endereço</h3>
+				<select class="form-control  input-lg" name="selectLogradouro" ng-options="logradouro.nome for logradouro in logradouros" ng-model="acadInput.endereco.logradouro">
+	              <option value="">Selecione</option>
+	            </select>
+
+				<input class="form-control input-lg" type="text" name="inputAdress" placeholder="Endereço", ng-model="acadInput.endereco.endereco">
+
+				<input class="form-control input-lg" type="text" name="inputNumber" placeholder="Número", ng-model="acadInput.endereco.numero">
+
+				<input class="form-control input-lg" type="tel" name="inputCompl" placeholder="Complemento" ng-model=acadInput.endereco.complemento>
+
+				<input class="form-control input-lg" type="tel" name="inputBairro" placeholder="Bairro" ng-model=acadInput.endereco.bairro>
+
+				<select class="form-control  input-lg" name="selectEstado" ng-options="estado.nome for estado in estados" ng-model="acadInput.endereco.estado">
+	              <option value="">Selecione o estado</option>
+	            </select>	
+
+				<select class="form-control  input-lg" name="selectCity" ng-options="cidade.nome for cidade in cidades" ng-model="acadInput.endereco.cidade">
+	              <option value="">Selecione a sua cidade</option>
+	            </select>            
+		</div>
+	</div>
+	<div class="col-md-6 col-xs12">
+		<h3 class="with-line">Administração</h3>
+	</div>
+</div>
+<!-- //////////////////////////////////////  FOTOS	///////////////////////////////// -->
+<div class="row">
+	<h3 class="with-line">Imagens da Academia. </h3><h5>Dê preferência a imagens verticais</h5>
+	<div class="col-md-4 col-xs12">
+	<h3 class="with-line">Imagem 1</h3>
+            <div class="acadpic">
+              <div class="userpic-wrapper" ng-show="noPicture1">
+                <img ng-src="{{ mask_acad }}">
+              </div>
+              <div class="userpic-wrapper" ng-show="!noPicture1">
+                <img ng-src="{{ step1 }}" class="img-responsive">
+              </div>
+            </div>
+                    <div ng-show="noPicture1">
+                        <label for="upload1" class="btn btn-success">
+                            Selecione
+                        </label>
+                        <input id="upload1" style="display:none;" type='file' file-input="files"  class="input-xlarge" onchange="angular.element(this).scope().uploadFoto1(event)" />
+                    </div>
+                     <div ng-show="!noPicture1">
+                        <button type="button" class="btn btn-danger" ng-click="removePicture1()">
+                            Apagar
+                        </button>
+                    </div>                   	
+	</div>
+	<div class="col-md-4 col-xs12">
+	<h3 class="with-line">Imagem 2</h3>
+            <div class="acadpic">
+              <div class="userpic-wrapper" ng-show="noPicture2">
+                <img ng-src="{{ mask_acad }}">
+              </div>
+              <div class="userpic-wrapper" ng-show="!noPicture2">
+                <img ng-src="{{ step2 }}" class="img-responsive">>
+              </div>
+
+            </div>
+            <div ng-show="noPicture2">
+                <label for="upload2" class="btn btn-success">
+					Selecione
+				</label>
+				<input id="upload2" style="display:none;" type='file' file-input="files"  class="input-xlarge" onchange="angular.element(this).scope().uploadFoto2(event)" />
+            </div>
+			<div ng-show="!noPicture2">
+            	<button type="button" class="btn btn-danger" ng-click="removePicture2()">
+                    Apagar
+				</button>
+			</div>             
+	</div>
+	<div class="col-md-4 col-xs12">
+	<h3 class="with-line">Imagem 3</h3>
+            <div class="acadpic">
+              <div class="userpic-wrapper" ng-show="noPicture3">
+                <img ng-src="{{ mask_acad }}">
+              </div>
+              <div class="userpic-wrapper" ng-show="!noPicture3">
+                <img ng-src="{{ step3 }}" class="img-responsive">>
+              </div>
+
+            </div>
+            <div ng-show="noPicture3">
+                <label for="upload3" class="btn btn-success">
+					Selecione
+				</label>
+				<input id="upload3" style="display:none;" type='file' file-input="files"  class="input-xlarge" onchange="angular.element(this).scope().uploadFoto3(event)" />
+            </div>
+			<div ng-show="!noPicture3">
+            	<button type="button" class="btn btn-danger" ng-click="removePicture3()">
+                    Apagar
+				</button>
+			</div>             
+	</div>		
+</div>
+<div class="row">
+	<div class="col-md-6 col-xs12">
+		<div class="form-group">
+		<h3 class="with-line">Selecione as modalidades oferecidas na academia</h3>
+				<select multiple class="form-control  input-lg" size=10 name="selectModalidade" ng-options="modalidade.modalidade for modalidade in modalidades" ng-model="acadInput.modalidades" >
+	            </select> 		
+		</div>
+	</div>
+	<div class="col-md-6 col-xs12">
+		<div class="form-group">
+		<h3 class="with-line">Selecione os benefícios da academia</h3>
+				<select multiple class="form-control  input-lg" size=10 name="selectBenefits" ng-options="benesse.tipo for benesse in benesses" ng-model="acadInput.beneficios" >
+	            </select> 		
+		</div>
+	</div>	
+</div>
+<div class="row">
+	<div class="col-md-6 col-xs12">
+		<div class="form-group">
+		    <button type="button" name="clicker-acadInput" ng-click="insertPartner(acadInput);" class="btn btn-primary btn-with-icon save-profile">
+		      <i class="ion-android-checkmark-circle"></i>Inserir Academia
+		    </button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,34 @@
+
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead class="thead-inverse">
+  <tr class="great">
+    <th class="col-sm-1"></th>
+    <th class="col-sm-3"> Nome da Academia
+    </th>
+    <th class="col-sm-2"> Cidade
+    </th>
+    <th class="col-sm-2"> Bairro
+    </th>
+    <th class="col-sm-2"> Associados
+    </th>
+    <th class="col-sm-1">
+    </th>
+    <th class="col-sm-1">
+    </th> 
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="academia in academias">
+    <td><img class="table-img" ng-src="{{academia.logo.url}}"></td>
+    <td class="great">{{academia.nome}}</td>
+    <td>{{academia.endereco.cidade.nome}}</td>
+    <td>{{academia.endereco.bairro}}</td>
+    <td></td>
+    <td><button type="button" class="btn btn-primary" data-toggle="modal" ng-click="editarAcademia(academia.$id)">Editar</button></td>
+    <td><button type="button" class="btn btn-danger" ng-click="deletarAcademia(academia)">Deletar</button></td>
+  </tr>
+  </tbody>
+</table>
+</div>
+

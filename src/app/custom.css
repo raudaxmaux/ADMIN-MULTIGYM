@@ -1,0 +1,44 @@
+ .minies{
+  max-height: 45px;
+  max-width: auto !important;
+}
+
+.table > tbody > tr > td {
+	line-height: 50px;
+}
+
+.great{
+	font-weight: 700;
+	font-size: 18px;
+}
+
+.table-img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;	
+}
+
+.thead-inverse th {
+    color: #fff;
+    background-color: #373a3c;
+}
+
+.btn {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.form-control{
+    margin-bottom: 10px; 
+}
+
+.change-userpic{
+    color: #fff;
+}
+
+.acadpic {
+    border: 1px dashed #b8b8b8;
+    width: 300px;
+    height: 400px;
+    position: relative;
+}

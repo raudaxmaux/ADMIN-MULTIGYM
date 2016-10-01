@@ -1,0 +1,166 @@
+<div ba-panel ba-panel-class="profile-page">
+  <div class="panel-content">
+
+    <h3 class="with-line">Informações Gerais</h3>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group row clearfix">
+          <label for="inputFirstName" class="col-sm-3 control-label">Imagem</label>
+
+          <div class="col-sm-9">
+            <div class="userpic">
+              <div class="userpic-wrapper">
+                <img ng-src="{{ picture }}" ng-click="uploadPicture()">
+              </div>
+              <i class="ion-ios-close-outline" ng-click="removePicture()" ng-if="!noPicture"></i>
+              <a href class="change-userpic" ng-click="uploadPicture()">Inserir Imagem do Perfil</a>
+              <input type="file" ng-show="false" id="uploadFile" ng-file-select="onFileSelect($files)">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group row clearfix">
+          <label for="inputFirstName" class="col-sm-3 control-label">Nome</label>
+
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="inputFirstName" placeholder="" value="">
+          </div>
+        </div>
+        <div class="form-group row clearfix">
+          <label for="inputLastName" class="col-sm-3 control-label">Sobrenome</label>
+
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="inputLastName" placeholder="" value="">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group row clearfix">
+          <label for="inputOccupation" class="col-sm-3 control-label">Data Nascimento</label>
+
+          <div class="col-sm-9">
+          <input data-provide="datepicker" class="form-control" id="inputOccupation">
+
+          </div>
+        </div>
+
+        <div class="form-group row clearfix">
+          <label for="inputOccupation" class="col-sm-3 control-label">Data Inscrição</label>
+
+          <div class="col-sm-9">
+          <input data-provide="datepicker" class="form-control" id="inputOccupation">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="col-md-6">
+        <div class="form-group row clearfix">
+          <label for="inputPassword" class="col-sm-3 control-label">Senha</label>
+
+          <div class="col-sm-9">
+            <input type="password" class="form-control" id="inputPassword" placeholder="" value="">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group row clearfix">
+          <label for="inputConfirmPassword" class="col-sm-3 control-label">Confirme Senha</label>
+
+          <div class="col-sm-9">
+            <input type="password" class="form-control" id="inputConfirmPassword" placeholder="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="with-line">Contato</h3>
+      <div class="form-group row clearfix">
+          <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
+
+          <div class="col-sm-9">
+            <input type="email" class="form-control" id="inputEmail3" placeholder="" value="">
+          </div>
+        </div>
+        <div class="form-group row clearfix">
+          <label for="inputPhone" class="col-sm-3 control-label">Telefone</label>
+
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="inputPhone" placeholder="" value="">
+          </div>
+        
+    </div>
+  </div><!-- fim da Col6 -->
+  <div class="col-md-6">
+    <h3 class="with-line">Endereço</h3>
+          <div class="form-group row clearfix">       
+          <label class="col-sm-3 control-label">Logradouro</label>
+
+          <div class="col-sm-6">
+            <select class="form-control" title="Selecione Estado" selectpicker>
+              <option selected>Selecione</option>
+              <option>Rua</option>
+              <option>Avenida</option>
+              <option>Praça</option>
+              <option>Estrada</option>
+            </select>
+          </div>
+          </div> 
+      <div class="form-group row clearfix">
+          <label for="inputEmail3" class="col-sm-3 control-label">Endereço</label>
+
+          <div class="col-sm-9">
+            <input type="email" class="form-control" id="inputEmail3" placeholder="" value="">
+          </div>
+        </div>
+        <div class="form-group row clearfix">
+          <label for="inputPhone" class="col-sm-3 control-label">Número</label>
+
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="inputPhone" placeholder="" value="">
+          </div>    
+  </div>
+  <div class="form-group row clearfix">
+          <label for="inputPhone" class="col-sm-3 control-label">Complemento</label>
+
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="inputPhone" placeholder="" value="">
+          </div>    
+  </div>
+    <div class="form-group row clearfix">
+          <label for="inputPhone" class="col-sm-3 control-label">Estado</label>
+
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="inputPhone" placeholder="" value="Rio de Janeiro">
+          </div>    
+  </div>
+            <div class="form-group row clearfix">       
+          <label class="col-sm-3 control-label">Cidade</label>
+
+          <div class="col-sm-6">
+            <select class="form-control" title="Selecione Cidade" selectpicker>
+              <option selected>Selecione Cidade</option>
+              <option>Rio de Janeiro</option>
+              <option>Niterói</option>
+              <option>São Gonçalo</option>
+              <option>Araruama</option>
+              <option>Angra dos Reis</option>
+            </select>
+          </div>
+          </div>  
+  </div><!-- fim do row -->
+
+    <button type="button" class="btn btn-primary btn-with-icon save-profile">
+      <i class="ion-android-checkmark-circle"></i>Salvar Perfil
+    </button>
+  </div>
+</div>
