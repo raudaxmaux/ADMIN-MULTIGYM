@@ -1,0 +1,186 @@
+<div class="row">
+	<div class="col-md-6 col-xs12">
+		<div class="form-group">
+			<h3 class="with-line">Informações Gerais</h3>
+			<label for="nome">Nome da Academia</label>
+			<input class="form-control input-lg" type="text" name="inputNome" ng-model="targetAcad.nome">
+			<label for="nome">Email da Academia</label>
+			<input class="form-control input-lg" type="email" name="inputMail" ng-model="targetAcad.email">
+
+			<label for="inputTel1">Telefone 1</label>
+			<input class="form-control input-lg" type="tel" name="inputTel1" ng-model=targetAcad.tel_1>
+
+			<label for="inputTel2">Telefone 1</label>
+			<input class="form-control input-lg" type="tel" name="inputTel2" placeholder="Tel 2" ng-model=targetAcad.tel_2>
+
+			<label for="inputHorario">Horários</label>
+			<textarea class="form-control input-lg " size=10 type="textarea" name="inputHorario" placeholder="Horários de funcionamento" ng-model=targetAcad.horarios></textarea> 			
+		</div>
+	</div>
+	<div class="col-md-6 col-xs6">
+		<h3 class="with-line">Logo</h3>
+            <div class="userpic">
+              <div class="userpic-wrapper" ng-show="noPicture">
+                <img ng-src="{{ picture }}">
+              </div>
+              <div class="userpic-wrapper" ng-show="!noPicture">
+                <img ng-src="{{ step }}"">
+              </div>
+            </div>
+
+
+                    <div ng-show="noPicture">
+                        <label for="upload" class="btn btn-success">
+                            Selecione
+                        </label>
+                        <input id="upload" style="display:none;" type='file' file-input="files"  class="input-xlarge" onchange="angular.element(this).scope().logoUpload(event)" />
+                    </div>
+                     <div ng-show="!noPicture">
+                        <button type="button" class="btn btn-danger" ng-click="removePicture()">
+                            Apagar
+                        </button>
+                    </div> 
+
+
+	</div>
+	
+</div>
+<div class="row">
+	<div class="col-md-6 col-xs12">
+		<div class="form-group">
+			<h3 class="with-line">Endereço</h3>
+				<select class="form-control  input-lg" name="selectLogradouro" ng-options="logradouro.nome for logradouro in logradouros" ng-model="targetAcad.endereco.logradouro">
+	              <option value="">Selecione</option>
+	            </select>
+	            <label for="inputAdress">Nome do Logradouro</label>
+				<input class="form-control input-lg" type="text" name="inputAdress"ng-model="targetAcad.endereco.endereco">
+
+				<label for="inputNumber">Número</label>
+				<input class="form-control input-lg" type="text" name="inputNumber" ng-model="targetAcad.endereco.numero">
+
+				<label for="inputCompl">Complemento</label>
+				<input class="form-control input-lg" type="tel" name="inputCompl" ng-model=targetAcad.endereco.complemento>
+
+				<label for="inputBairro">Bairro</label>
+				<input class="form-control input-lg" type="tel" name="inputBairro" ng-model=targetAcad.endereco.bairro>
+
+				<label for="selectEstado">Estado</label>
+				<select class="form-control  input-lg" name="selectEstado" ng-model="targetAcad.endereco.estado" 
+				ng-options="estado as estado.nome for estado in estados track by estado.tipo">
+	              <option value="">Selecione o estado</option>
+	            </select>
+
+				<label for="selectCity">Cidade</label>
+				<select class="form-control  input-lg" name="selectCity"  ng-model="targetAcad.endereco.cidade" ng-options="cidade as cidade.nome for cidade in cidades track by cidade.nome">
+	              <option value="">Selecione a sua cidade</option>
+	            </select>            
+		</div>
+	</div>
+	<div class="col-md-6 col-xs12">
+		<h3 class="with-line">Administração</h3>
+	</div>
+</div>
+<!-- //////////////////////////////////////  FOTOS	///////////////////////////////// -->
+<div class="row">
+	<h3 class="with-line">Imagens da Academia. </h3><h5>Dê preferência a imagens verticais</h5>
+	<div class="col-md-4 col-xs12">
+	<h3 class="with-line">Imagem 1</h3>
+            <div class="acadpic">
+              <div class="userpic-wrapper" ng-show="nofoto1">
+                <img ng-src="{{ mask_acad }}">
+              </div>
+              <div class="userpic-wrapper" ng-show="!nofoto1">
+                <img ng-src="{{ foto1 }}" class="img-responsive">
+              </div>
+            </div>
+                    <div ng-show="nofoto1">
+                        <label for="upload1" class="btn btn-success">
+                            Selecione
+                        </label>
+                        <input id="upload1" style="display:none;" type='file' file-input="files"  class="input-xlarge" onchange="angular.element(this).scope().uploadFoto1(event)" />
+                    </div>
+                     <div ng-show="!nofoto1">
+                        <button type="button" class="btn btn-danger" ng-click="removePicture1()">
+                            Apagar
+                        </button>
+                    </div>                   	
+	</div>
+	<div class="col-md-4 col-xs12">
+	<h3 class="with-line">Imagem 2</h3>
+            <div class="acadpic">
+              <div class="userpic-wrapper" ng-show="nofoto2">
+                <img ng-src="{{ mask_acad }}">
+              </div>
+              <div class="userpic-wrapper" ng-show="!nofoto2">
+                <img ng-src="{{ foto2 }}" class="img-responsive">
+              </div>
+
+            </div>
+            <div ng-show="nofoto2">
+                <label for="upload2" class="btn btn-success">
+					Selecione
+				</label>
+				<input id="upload2" style="display:none;" type='file' file-input="files"  class="input-xlarge" onchange="angular.element(this).scope().uploadFoto2(event)" />
+            </div>
+			<div ng-show="!nofoto2">
+            	<button type="button" class="btn btn-danger" ng-click="removePicture2()">
+                    Apagar
+				</button>
+			</div>             
+	</div>
+	<div class="col-md-4 col-xs12">
+	<h3 class="with-line">Imagem 3</h3>
+            <div class="acadpic">
+              <div class="userpic-wrapper" ng-show="nofoto3">
+                <img ng-src="{{ mask_acad }}">
+              </div>
+              <div class="userpic-wrapper" ng-show="!nofoto3">
+                <img ng-src="{{ foto3 }}" class="img-responsive">
+              </div>
+
+            </div>
+            <div ng-show="nofoto3">
+                <label for="upload3" class="btn btn-success">
+					Selecione
+				</label>
+				<input id="upload3" style="display:none;" type='file' file-input="files"  class="input-xlarge" onchange="angular.element(this).scope().uploadFoto3(event)" />
+            </div>
+			<div ng-show="!nofoto3">
+            	<button type="button" class="btn btn-danger" ng-click="removePicture3()">
+                    Apagar
+				</button>
+			</div>             
+	</div>		
+</div>
+<div class="row">
+	<div class="col-md-6 col-xs12">
+		<div class="form-group">
+		<h3 class="with-line">Selecione as modalidades oferecidas na academia</h3>
+				<select multiple class="form-control  input-lg" size=10 name="selectModalidade" ng-options="modalidade as modalidade.modalidade for modalidade in modalidades track by modalidade.modalidade" ng-model="targetAcad.modalidades" >
+	            </select> 		
+		</div>
+	</div>
+	<div class="col-md-6 col-xs12">
+		<div class="form-group">
+		<h3 class="with-line">Selecione os benefícios da academia</h3>
+				<select multiple class="form-control  input-lg" size=10 name="selectBenefits" ng-options="benesse as benesse.tipo for benesse in benesses track by benesse.tipo" ng-model="targetAcad.beneficios" >
+	            </select> 		
+		</div>
+	</div>	
+</div>
+<div class="row">
+	<div class="col-md-3 col-xs6">
+		<div class="form-group">
+		    <button type="button" name="clicker-targetAcad" ng-click="updatePartner();" class="btn btn-danger btn-with-icon save-profile">
+		      <i class="ion-android-checkmark-circle"></i>Editar Academia
+		    </button>
+		</div>
+	</div>
+	<div class="col-md-3 col-xs6">
+		<div class="form-group">
+		    <button type="button" name="clicker-targetAcad" ng-click="cancelaUpdate();" class="btn btn-primary btn-with-icon save-profile">
+		      <i class="ion-android-close"></i>Cancelar
+		    </button>
+		</div>
+	</div>	
+</div>

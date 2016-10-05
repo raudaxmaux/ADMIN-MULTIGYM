@@ -29,6 +29,11 @@
           sidebarMeta: {
           order: 0,
           },
+          resolve:{
+            academiasInit: function(fireStuff){
+              return fireStuff.pegaAcademias();
+            }
+          }
         })
         .state('academias.nova_academia', {
           url: '/nova_academia',
@@ -38,6 +43,20 @@
           sidebarMeta: {
             order: 100,
           },
+        })
+        .state('academias.editar_academia', {
+          url: '/editar_academia/:id',
+          controller: 'editarAcademiaPageCtrl',         
+          templateUrl: 'app/pages/academias/editar_academia/editar_academia.html',
+          title: 'Editar Academia',
+          resolve:{
+              unicaAcad: function(fireStuff, accessFactory, $stateParams){
+                  var theAcademy = accessFactory.pegaAcademiaUnica($stateParams.id);
+                  return theAcademy.once("value").then(function(snapshot){              
+                    return snapshot.val();
+                  })              
+              }
+          }         
         });
   }
 })();

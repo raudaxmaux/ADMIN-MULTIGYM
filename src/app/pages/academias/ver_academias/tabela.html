@@ -25,7 +25,7 @@
     <td>{{academia.endereco.cidade.nome}}</td>
     <td>{{academia.endereco.bairro}}</td>
     <td></td>
-    <td><button type="button" class="btn btn-primary" data-toggle="modal" ng-click="editarAcademia(academia.$id)">Editar</button></td>
+    <td><a href="#/academias/editar_academia/{{academia.$id}}"><button type="button" class="btn btn-primary">Editar</button></a></td>
     <td><button type="button" class="btn btn-danger" ng-click="deletarAcademia(academia)">Deletar</button></td>
   </tr>
   </tbody>

@@ -5,17 +5,12 @@
  	'use strict';
   angular.module('BlurAdmin.pages.academias').controller('verAcademiasPageCtrl', verAcademiasPageCtrl);
 
-    function verAcademiasPageCtrl($scope, $rootScope, $location, $firebaseObject, $firebaseArray, accessFactory, $uibModal, toastr, fireStuff) {
+    function verAcademiasPageCtrl($scope, $rootScope, $location, $firebaseObject, $firebaseArray, accessFactory, $uibModal, toastr, fireStuff, academiasInit) {
     	console.log("verAcademiasPageCtrl");
         console.log($location.path());
-    	$scope.academias = [];
-
-    	$scope.pegaAcademias = function(){
-    		var acadPlace = accessFactory.pegaAcademiaList()
-    		var acad = $firebaseArray(acadPlace);
-    		console.log(acad);
-   			$scope.academias = acad;
-    	};
+        console.log(academiasInit)
+    	$scope.academias = academiasInit;
+      console.log("ver academias")
 
         $scope.editarAcademia = function(acadId){
             console.log(acadId);
@@ -37,7 +32,6 @@
 
 
       $rootScope.$on("apagado", function(event){
-        console.log("BIIIIIIIIIIIIIIIIIIRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR!!!!!!!!!!!!!!!!!!!!!");
         toastr.success('A academia foi removida com sucesso!');  
         //$location.path('/academias/ver_academias');
       });
@@ -62,10 +56,6 @@
               });
             };
 
-
-
-
-    	$scope.pegaAcademias();
 
     };// fim da função principal. ATENÇÃO!!!
  })();// fim do arquivo. ATENÇÃO!!!	
