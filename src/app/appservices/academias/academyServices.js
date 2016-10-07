@@ -1,6 +1,0 @@
-(function(){
-	'use_strict';
-
-
-	
-})();

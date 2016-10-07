@@ -25,7 +25,8 @@ angular.module('BlurAdmin', [
   'angular-progress-button-styles',
   'BlurAdmin.theme',
   'BlurAdmin.pages',
-  'firebase'
+  'firebase',
+  'angular.viacep'
 ]).directive('fileInput', function($parse){
   return{
     restrict : 'A',

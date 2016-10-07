@@ -3,7 +3,7 @@
 
   angular.module('BlurAdmin.pages.academias').controller('editarAcademiaPageCtrl', editarAcademiaPageCtrl);
 
-  	function editarAcademiaPageCtrl($scope, $rootScope, $stateParams, $location, $firebaseObject, $firebaseArray, accessFactory, fileReader, $filter, $uibModal, fireStuff, unicaAcad, viaCEP, $http){
+  	function editarAcademiaPageCtrl($scope, $rootScope, $stateParams, $location, $firebaseObject, $firebaseArray, accessFactory, fileReader, $filter, $uibModal, fireStuff, unicaAcad){
 
  ////////  VARIÁVEIS
 
@@ -34,6 +34,26 @@
   ////////  ÁREA DE PREENCHIMENTO DE COMBOBOXES
   ////////   (será trocada por JSONs externos)
 
+  		$scope.logradouros = [
+  			{nome: "Rua", tipo: "rua"},
+   			{nome: "Avenida", tipo: "avenida"},
+        {nome: "Alameda", tipo: "alameda"},
+        {nome: "Estrada", tipo: "estrada"},
+    		{nome: "Praça", tipo: "praça"}
+  		];
+
+  		$scope.estados = [
+  			{nome: "Rio de Janeiro", tipo: "rio de Janeiro"},
+        {nome: "São Paulo", tipo: "sao paulo"}       
+  		];
+
+   		$scope.cidades = [
+  			{nome: "Angra dos Reis"},
+   			{nome: "Araruama"},
+    		{nome: "Niterói"},
+   			{nome: "Rio de Janeiro"},
+   			{nome: "São Gonçalo"}
+  		];
 
   		$scope.modalidades = [
   			{modalidade: "Musculação"},
@@ -246,23 +266,7 @@
 
       $scope.updatePartner = function(){
 
-        $scope.placeToPoint = $scope.targetAcad.endereco.endereco +" "+ $scope.targetAcad.endereco.numero +" "+ $scope.targetAcad.endereco.bairro +" "+ $scope.targetAcad.endereco.cidade
-
-         console.log($scope.placeToPoint)
-
-              $http.get('http://maps.google.com/maps/api/geocode/json?address='+ $scope.placeToPoint).success(function(mapData) {
-                $scope.geopos = mapData.results[0].geometry.location;
-                $scope.targetAcad.endereco.geopos = $scope.geopos;
-                console.log($scope.targetAcad);
-                $scope.updatePartner2();
-              },function(error){
-                console.log("Não foi possível salvar o posicionamento");
-                $scope.updatePartner2();                
-              });
-              
-      };
              //console.log("iniciar mudança");      
-     $scope.updatePartner2 = function(){
 
          if($scope.file1){
             console.log("guardando foto1");
@@ -287,7 +291,7 @@
       });
 
       $scope.cancelaUpdate = function(){
-         delete $scope.targetAcad;
+         delete $scope.inputObj;
         delete $scope.logofile;
         delete $scope.fotosAcad;
         console.log("Desisto e retorno");

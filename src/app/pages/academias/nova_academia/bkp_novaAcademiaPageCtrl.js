@@ -3,7 +3,7 @@
 
   angular.module('BlurAdmin.pages.academias').controller('novaAcademiaPageCtrl', novaAcademiaPageCtrl);
 
-  	function novaAcademiaPageCtrl($scope, $rootScope, $location, $firebaseObject, $firebaseArray, accessFactory, fileReader, $filter, $uibModal, fireStuff, viaCEP, $http){
+  	function novaAcademiaPageCtrl($scope, $rootScope, $location, $firebaseObject, $firebaseArray, accessFactory, fileReader, $filter, $uibModal, fireStuff){
 
 	$scope.picture = $filter('appImage')('theme/no-photo.png');
 
@@ -14,6 +14,27 @@
        $scope.noPicture1 = true;		
        $scope.noPicture2 = true;    
        $scope.noPicture3 = true;
+
+
+  		$scope.logradouros = [
+  			{nome: "Rua", tipo: "rua"},
+   			{nome: "Avenida", tipo: "avenida"},
+        {nome: "Alameda", tipo: "alameda"},
+        {nome: "Estrada", tipo: "estrada"},
+    		{nome: "Praça", tipo: "praça"}
+  		];
+
+  		$scope.estados = [
+  			{nome: "Rio de Janeiro", tipo: "rio de Janeiro"},
+  		];
+
+   		$scope.cidades = [
+  			{nome: "Angra dos Reis"},
+   			{nome: "Araruama"},
+    		{nome: "Niterói"},
+   			{nome: "Rio de Janeiro"},
+   			{nome: "São Gonçalo"}
+  		];
 
   		$scope.modalidades = [
   			{modalidade: "Musculação"},
@@ -181,30 +202,9 @@
 
 
       ///////// SALVA OS ARQUIVOS  /////////////////////////
-
-      /////////  PRIMEIRO O POSICIONAMENTO
-
-
       $scope.insertPartner = function(inputObj){
          $scope.inputObj = inputObj;
 
-         $scope.placeToPoint = $scope.inputObj.endereco.endereco +" "+ $scope.inputObj.endereco.numero +" "+ $scope.inputObj.endereco.bairro +" "+ $scope.inputObj.endereco.cidade
-
-         console.log($scope.placeToPoint)
-
-              $http.get('http://maps.google.com/maps/api/geocode/json?address='+ $scope.placeToPoint).success(function(mapData) {
-                $scope.geopos = mapData.results[0].geometry.location;
-                $scope.inputObj.endereco.geopos = $scope.geopos;
-                console.log($scope.inputObj);
-                $scope.insertPartner2();
-              },function(error){
-                console.log("Não foi possível salvar o posicionamento");
-                $scope.insertPartner2();                
-              });
-
-          };    
-
-        $scope.insertPartner2 = function(){
          if($scope.foto1){
             console.log("guardando foto1");
             $scope.fotosAcad.foto1 = $scope.foto1; 

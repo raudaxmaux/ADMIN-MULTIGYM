@@ -49,42 +49,31 @@
 	<div class="col-md-6 col-xs12">
 		<div class="form-group">
 			<h3 class="with-line">Endereço</h3>
-                       <label for="inputCep">
-                            Cep
-                        </label>			
-				<input class="form-control input-lg" type="text" name="inputCep" , ng-model="targetAcad.endereco.cep" via-cep="cep">
-                        <label for="inputAdress">
-                            Endereço
-                        </label>
-				<input class="form-control input-lg" type="text" name="inputAdress" placeholder="Endereço", ng-model="targetAcad.endereco.endereco" via-cep="logradouro">
-                        <label for="inputNumber">
-                            Número
-                        </label>
-				<input class="form-control input-lg" style="background-color: #f9edb5;" type="text" name="inputNumber" placeholder="Número", ng-model="targetAcad.endereco.numero">
-                        <label for="inputCompl">
-                            Complemento
-                        </label>
-				<input class="form-control input-lg" type="text" name="inputCompl" placeholder="Complemento" ng-model=targetAcad.endereco.complemento>
- 						<label for="selectCity">
-                            Cidade
-                        </label>
-				<input class="form-control input-lg" type="text" name="selectCity" ng-model="targetAcad.endereco.cidade" via-cep="localidade">
- 						<label for="inputBairro">
-                            Bairro
-                        </label>				
-				<input class="form-control input-lg" type="text" name="inputBairro" placeholder="Bairro" ng-model=targetAcad.endereco.bairro via-cep="bairro">
-                        <label for="selectEstado">
-                            UF
-                        </label>
-				<input class="form-control input-lg" type="text" name="selectEstado" ng-model="targetAcad.endereco.estado" via-cep="uf">           
-				<label for="inputBairro">
-                            Latitude Atual
-                        </label>				
-				<input class="form-control input-lg" type="text" name="inputLat" placeholder="Bairro" ng-model="targetAcad.endereco.geopos.lat" disabled>
-				<label for="inputBairro">
-                            Longitude Atual
-                        </label>
-				<input class="form-control input-lg" type="text" name="inputLong" ng-model="targetAcad.endereco.geopos.lng" disabled>		
+				<select class="form-control  input-lg" name="selectLogradouro" ng-options="logradouro.nome for logradouro in logradouros" ng-model="targetAcad.endereco.logradouro">
+	              <option value="">Selecione</option>
+	            </select>
+	            <label for="inputAdress">Nome do Logradouro</label>
+				<input class="form-control input-lg" type="text" name="inputAdress"ng-model="targetAcad.endereco.endereco">
+
+				<label for="inputNumber">Número</label>
+				<input class="form-control input-lg" type="text" name="inputNumber" ng-model="targetAcad.endereco.numero">
+
+				<label for="inputCompl">Complemento</label>
+				<input class="form-control input-lg" type="tel" name="inputCompl" ng-model=targetAcad.endereco.complemento>
+
+				<label for="inputBairro">Bairro</label>
+				<input class="form-control input-lg" type="tel" name="inputBairro" ng-model=targetAcad.endereco.bairro>
+
+				<label for="selectEstado">Estado</label>
+				<select class="form-control  input-lg" name="selectEstado" ng-model="targetAcad.endereco.estado" 
+				ng-options="estado as estado.nome for estado in estados track by estado.tipo">
+	              <option value="">Selecione o estado</option>
+	            </select>
+
+				<label for="selectCity">Cidade</label>
+				<select class="form-control  input-lg" name="selectCity"  ng-model="targetAcad.endereco.cidade" ng-options="cidade as cidade.nome for cidade in cidades track by cidade.nome">
+	              <option value="">Selecione a sua cidade</option>
+	            </select>            
 		</div>
 	</div>
 	<div class="col-md-6 col-xs12">
