@@ -26,7 +26,8 @@ angular.module('BlurAdmin', [
   'BlurAdmin.theme',
   'BlurAdmin.pages',
   'firebase',
-  'angular.viacep'
+  'angular.viacep',
+  'angularGeoFire'
 ]).directive('fileInput', function($parse){
   return{
     restrict : 'A',

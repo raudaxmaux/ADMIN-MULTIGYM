@@ -22,7 +22,7 @@
   <tr ng-repeat="academia in academias">
     <td><img class="table-img" ng-src="{{academia.logo.url}}"></td>
     <td class="great">{{academia.nome}}</td>
-    <td>{{academia.endereco.cidade.nome}}</td>
+    <td>{{academia.endereco.cidade}}</td>
     <td>{{academia.endereco.bairro}}</td>
     <td></td>
     <td><a href="#/academias/editar_academia/{{academia.$id}}"><button type="button" class="btn btn-primary">Editar</button></a></td>

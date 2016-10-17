@@ -7,7 +7,7 @@
 	*/
 	angular.module("BlurAdmin").factory('fireStuff', fireStuff);
 
-	function fireStuff($rootScope, accessFactory, $firebaseObject, $firebaseArray, $location){
+	function fireStuff($rootScope, accessFactory, $firebaseObject, $firebaseArray, $geofire, $location){
 	
 		var coisador = {
 			guardaAcademia: _guardaAcademia,
@@ -28,6 +28,10 @@
 	        var novaAcademia = acadRef.push(angular.fromJson(angular.toJson(objAcad))).then(function(success){
 	            acadRef.limitToLast(1).on("child_added", function(snapshot) {
 	            var acadId = snapshot.key
+	  			// geoposicionamento por geohash aqui
+	  			//var geoElement = acadAll.endereco.geopos;
+	  			geoAble(objAcad, acadId);
+	  			//	            
 	            storePhoto(acadId);
 	            });
 	        });
@@ -142,12 +146,13 @@
 						  			console.log('Ainda não...');
 								}else{
 						  			console.log('Agora sim...');
-						    		console.log(counter);
+
 						    		objAcad = null;
 									objLogo = null;
 									imgObj = null;
 						  			$rootScope.$broadcast("cadastrado");
-						  			console.log("segundo disparo");				    			       									  			
+						  			console.log("primeiro disparo");
+
 								}
 						  });
 
@@ -165,11 +170,31 @@
 						  	console.log("segundo disparo");												          		
 				        }					 		       	
 		       	};
+
+		       	var geoAble = function(tuti, key){
+		       		var coords = tuti.endereco.geopos;
+		       		console.log(coords);
+		       		var $geo = $geofire(accessFactory.pegaMapeamento());
+		       		$geo.$set(key,[coords.lat, coords.lng]).then(function(success){
+		       			console.log("deu certo!");
+		       		}).catch(function(error){
+						console.log("não deu certo!");
+						console.log("erro: "+ error);		       			
+		       		})
+
+
+
+		       	};
 		}
 
 		function _apagaAcademia(academics){
             var byebye = firebase.database().ref("academias/"+ academics.$id);
             byebye.remove().then(function(){
+            	var $geo = $geofire(accessFactory.pegaMapeamento());
+            	$geo.$remove(academics.$id)
+		        .catch(function (err) {
+		            $log.error(err);
+		        });
               if(academics.logo){
              var delLogos = firebase.storage().ref();
             var logsDel = delLogos.child(academics.logo.ref);
@@ -233,6 +258,7 @@
 		    var counter = 0;
 			firebase.database().ref("academias/"+academiaID).update(angular.fromJson(angular.toJson(upobjAcad))).then(function(success){
 					//acabouUpdate()
+					geoAble2(upobjAcad, academiaID);
 					reestoreLogo(academiaID);
 				});
 
@@ -453,7 +479,22 @@
 					console.log("salvou o update");
 				}
 
-		}
+		       	var geoAble2 = function(tuti, key){
+		       		var coords = tuti.endereco.geopos;
+		       		console.log(coords);
+		       		var $geo = $geofire(accessFactory.pegaMapeamento());
+		       		$geo.$set(key,[coords.lat, coords.lng],{"nome": tuti.nome}).then(function(success){
+		       			console.log("deu certo o update!");
+		       		}).catch(function(error){
+						console.log("não deu certo o update!");
+						console.log("erro: "+ error);		       			
+		       		})
+
+
+
+		       	};				
+
+		};
 					
 
 	};

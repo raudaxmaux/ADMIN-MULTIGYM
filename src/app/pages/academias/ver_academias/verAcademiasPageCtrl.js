@@ -15,7 +15,6 @@
         $scope.editarAcademia = function(acadId){
             console.log(acadId);
 
-            // body...
         };
 
         $scope.deletarAcademia = function(acad){

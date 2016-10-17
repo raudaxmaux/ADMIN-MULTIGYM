@@ -13,15 +13,15 @@
 		var userPath = firebase.database().ref("usuarios");
 		var academyPath = firebase.database().ref("academias");
 		var treinosPath = firebase.database().ref("treinos");
+		var geoPath = firebase.database().ref("acad_position");
 		var nakedPath = firebase.database();
 		
 		var accessBack = {
 			pegaUsuario: pegaUsuario,
 			pegaUserList: pegaUserList,
-			
 			pegaAcademiaUnica: pegaAcademiaUnica,
 			pegaAcademiaList: pegaAcademiaList,
-			
+			pegaMapeamento: pegaMapeamento,
 			pegaAgendamento: pegaAgendamento
 		};
 		return accessBack;
@@ -44,6 +44,10 @@
 
 		function pegaAgendamento(key){
 			return treinosPath.child(key);
+		};
+
+		function pegaMapeamento(){
+			return geoPath;
 		};
 
 		function pegaBaseData(){
