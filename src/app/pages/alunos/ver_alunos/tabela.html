@@ -6,11 +6,11 @@
     <th></th>
     <th> Nome
     </th>
-    <th> Cidade
+    <th class="text-center"> Cidade
     </th>
-    <th> Bairro
+    <th class="text-center"> Bairro
     </th>
-    <th> Academia
+    <th class="text-center"> Academia
     </th>
      <th>
     </th>
@@ -19,60 +19,15 @@
   </tr>
   </thead>
   <tbody>
-  <tr>
-    <td><img class="table-img" ng-src="{{::( 'acad01' | profilePicture )}}"></td>
-    <td class="great">Alexander Landau</td>
-    <td>Rio de Janeiro</td>
-    <td>Copacabana</td>
-    <td>Fisio App</td>
-    <td><button type="button" class="btn btn-primary">Editar</button></td>
-    <td><button type="button" class="btn btn-danger">Deletar</button></td>
+  <tr ng-repeat="usuario in usuarios">
+    <td class="text-center"><img class="table-img" ng-src="{{usuario.photoURL}}" ng-if="usuario.photoURL != ''"><img class="table-img" ng-src="{{::( 'acad01' | profilePicture )}}" ng-if="usuario.photoURL == ''"></td>
+    <td class="great">{{usuario.displayName}}</td>
+    <td class="text-center">{{usuario.cidade}}</td>
+    <td class="text-center">{{usuario.estado}}</td>
+    <td class="text-center">{{usuario.academiaNome}}</td>
+    <td class="text-center"><button type="button" class="btn btn-primary">Editar</button></td>
+    <td class="text-center"><button type="button" class="btn btn-danger"  ng-click="delUser(usuario)">Deletar</button></td>
   </tr>
-  <tr>
-    <td><img class="table-img" ng-src="{{::( 'acad02' | profilePicture )}}"></td>
-    <td class="great">Klaus Denecke</td>
-    <td>Niterói</td>
-    <td>Icaraí</td>
-    <td>On Academy</td>
-    <td><button type="button" class="btn btn-primary">Editar</button></td>
-    <td><button type="button" class="btn btn-danger">Deletar</button></td>
-  </tr>
-  <tr>
-    <td><img class="table-img" ng-src="{{::( 'acad01' | profilePicture )}}"></td>
-    <td class="great">Nadia Comanecci</td>
-    <td>Rio de Janeiro</td>
-    <td>Botafogo</td>
-    <td>Fisio App</td>
-    <td><button type="button" class="btn btn-primary">Editar</button></td>
-    <td><button type="button" class="btn btn-danger">Deletar</button></td>
-  </tr>
-  <tr>
-    <td><img class="table-img" ng-src="{{::( 'acad02' | profilePicture )}}"></td>
-    <td class="great">Vladimir Borg</td>
-    <td>Niterói</td>
-    <td>Santa Rosa</td>
-    <td>On Academy</td>
-    <td><button type="button" class="btn btn-primary">Editar</button></td>
-    <td><button type="button" class="btn btn-danger">Deletar</button></td>
-  </tr>
-  <tr>
-    <td><img class="table-img" ng-src="{{::( 'acad01' | profilePicture )}}"></td>
-    <td class="great">Andrey Carvalho</td>
-    <td>Rio de Janeiro</td>
-    <td>Ipanema</td>
-    <td>Fisio App</td>
-    <td><button type="button" class="btn btn-primary">Editar</button></td>
-    <td><button type="button" class="btn btn-danger">Deletar</button></td>
-  </tr>
-  <tr>
-    <td><img class="table-img" ng-src="{{::( 'acad02' | profilePicture )}}"></td>
-    <td class="great">Nicolas Andretti</td>
-    <td>Niterói</td>
-    <td>Boa Viagem</td>
-    <td>Fiso App</td>
-    <td><button type="button" class="btn btn-primary">Editar</button></td>
-    <td><button type="button" class="btn btn-danger">Deletar</button></td>
-  </tr>            
   </tbody>
 </table>
 

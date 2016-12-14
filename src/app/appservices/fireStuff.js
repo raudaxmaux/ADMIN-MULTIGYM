@@ -14,7 +14,8 @@
 			apagaAcademia: _apagaAcademia,
 			atualizaAcademia: _atualizaAcademia,
 			pegaAcademias: _pegaAcademias,
-			academiaUnica: _academiaUnica
+			academiaUnica: _academiaUnica,
+			getAcadName: _getAcadName
 		};
 		return coisador;
 
@@ -243,6 +244,15 @@
 				var editedAcad = snapshot.val();
 				return editedAcad;
 			});
+		}
+
+		function _getAcadName(id) {
+			var theAcademy = accessFactory.pegaAcademiaUnica(id);
+			theAcademy.once("value", function(snapshot){
+				var editedAcad = snapshot.val();
+				console.log()
+				return editedAcad.nome;
+			});			// body...
 		}
 	
 

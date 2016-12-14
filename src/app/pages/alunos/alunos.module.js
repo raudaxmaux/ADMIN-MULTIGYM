@@ -25,10 +25,15 @@
           url: '/ver_alunos',
           controller: 'verAlunosPageCtrl',
           templateUrl: 'app/pages/alunos/ver_alunos/ver_alunos.html',
-          title: 'Ver Alunos',
+          title: 'Alunos',
           sidebarMeta: {
             order: 0,
           },
+          resolve:{
+            usersInit: function(userFactory){
+              return userFactory.juntaUsers();
+            }
+          }        
         })
         .state('alunos.novo_aluno', {
           url: '/novo_aluno',
