@@ -44,5 +44,8 @@
   },
   "scripts": {
     "postinstall": "bower install"
+  },
+  "dependencies": {
+    "firebase-admin": "^4.0.4"
   }
 }
